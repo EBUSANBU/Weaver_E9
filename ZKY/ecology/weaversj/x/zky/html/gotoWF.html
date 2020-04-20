@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证跳转...</title>
+    <style>
+        .code
+        {
+            font-family:Arial;
+            font-style:italic;
+            color:blue;
+            font-size:30px;
+            border:0;
+            padding:2px 3px;
+            letter-spacing:3px;
+            font-weight:bolder;
+            float:left;
+            cursor:pointer;
+            width:150px;
+            height:50px;
+            line-height:60px;
+            text-align:center;
+            vertical-align:middle;
+            background-color:#D8B7E3;
+        }
+        span {
+            text-decoration:none;
+            font-size:12px;
+            color:#288bc4;
+            padding-left:10px;
+        }
+
+        span:hover {
+            text-decoration:underline;
+            cursor:pointer;
+        }
+
+    </style>
+    <script src="/weaversj/x/zky/public_ui/js/jquery-1.8.3.min.js" charset="utf-8"></script>
+</head>
+<script>
+    //页面加载时，生成随机验证码
+    window.onload=function(){
+        /*   if (is_weixn()){
+               jQuery("#msg").show();
+               jQuery("#msg").html("</span>请在手机浏览器上打开此链接：</span>"+"<div><textarea rows='10' cols='40'>"+window.location.href+"</textarea></div>");
+               jQuery("#code").hide();
+           } else {
+               jQuery("#code").show();
+               jQuery("#msg").hide();
+           }*/
+        gotoWF();
+        createCode(4);
+    };
+
+    //生成验证码的方法
+    function createCode(length) {
+        var code = "";
+        var codeLength = parseInt(length); //验证码的长度
+        var checkCode = document.getElementById("checkCode");
+        var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        //循环组成验证码的字符串
+        for (var i = 0; i < codeLength; i++)
+        {
+            //获取随机验证码下标
+            var charNum = Math.floor(Math.random() * 62);
+            //组合成指定字符验证码
+            code += codeChars[charNum];
+        }
+        if (checkCode)
+        {
+            //为验证码区域添加样式名
+            checkCode.className = "code";
+            //将生成验证码赋值到显示区
+            checkCode.innerHTML = code;
+        }
+    }
+
+    //检查验证码是否正确
+    function validateCode()
+    {
+        //获取显示区生成的验证码
+        var checkCode = document.getElementById("checkCode").innerHTML;
+        //获取输入的验证码
+        var inputCode = document.getElementById("inputCode").value;
+        //console.log(checkCode);
+        //console.log(inputCode);
+        if (inputCode.length <= 0)
+        {
+            alert("请输入验证码！");
+        }
+        else if (inputCode.toUpperCase() != checkCode.toUpperCase())
+        {
+            alert("验证码输入有误！");
+            createCode(4);
+        }
+        else
+        {
+            gotoWF();
+        }
+    }
+
+    function gotoWF() {
+        var dat = {};
+        dat.rid = getQueryString("rid");
+        dat.action = getQueryString("action");
+        dat.wid = getQueryString("wid");
+        dat.want = getQueryString("want");
+        dat.isPc = isPC();
+        // console.log(data);
+        jQuery.ajax({
+            url:"/weaversj/x/zky/jsp/getToken.jsp?",
+            dataType:"text",
+            type:"post",
+            data: dat,
+            async:false,
+            success:function (data) {
+                if (!isPC()) {
+                    data+="&returnUrl="+window.encodeURIComponent("/weaversj/x/zky/html/msg.html");
+                    window.location.href = data;
+                } else {
+                    closeWindow();
+                    window.open(data);
+                }
+            }
+        });
+    }
+    function getQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    function isPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+    function is_weixn(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function closeWindow() {
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("Firefox") != -1 || userAgent.indexOf("Chrome") != -1) {
+            location.href = "about:blank";
+        } else {
+            window.opener = null;
+            window.open('', '_self');
+        }
+        window.close();
+    }
+</script>
+<body>
+<div id="code">
+    <table border="0" cellspacing="5" cellpadding="5" >
+        <tr>
+            <td> <div id="checkCode" class="code"  onclick="createCode(4)" ></div></td>
+            <td> <span onclick="createCode(4)">看不清换一张</span></td>
+        </tr>
+        <tr>
+            <td>验证码：</td>
+            <td><input type="text" id="inputCode"  style="float:left;" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" onclick="validateCode()"  value="确定" /></td>
+        </tr>
+    </table>
+</div>
+<div id="msg"></div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Weaver_E9:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Weaver_E9_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Weaver_E9/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Weaver_E9" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

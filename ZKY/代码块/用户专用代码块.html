@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    var field = "yxyq"; //流程表单意向园区字段数据库名
+    function getQueryString(key , dv){
+        var url = window.location.href;
+        if (url.indexOf('?') < 0){
+            return key ? dv : {};
+        }
+
+        var s = url.substring(url.indexOf('?') + 1).split('&');
+        var p = {};
+        for (var n = 0; n < s.length; n++){
+            var t = s[n].split('=');
+            var k = t[0];
+            var v = t[1];
+            if (k in p){
+                if (p[k] instanceof String){
+                    var ks = p[k];
+                    var a = [];
+                    a[0] = ks;
+                    a[1] = v;
+                    p[k] = a;
+                } else {
+                    var a = p[k];
+                    a[a.length] = v;
+                    p[k] = a;
+                }
+            } else {
+                p[k] = v;
+            }
+        }
+        if (key){
+            return p[key];
+        } else {
+            return p;
+        }
+    }
+
+    jQuery(function () {
+        jQuery(".wf-req-top").hide();
+        WfForm.changeFieldValue(WfForm.convertFieldNameToId(field), {
+            value: getQueryString("want"),
+            specialobj:[
+                {id:getQueryString("want"),name:decodeURI(getQueryString("name"))}
+            ]
+        })
+    });
+
+</script>
+<body>
+
+</body>
+</html>
