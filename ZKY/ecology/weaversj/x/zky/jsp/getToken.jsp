@@ -15,7 +15,7 @@
     String requestid = Util.null2String(request.getParameter("rid"));
     String isPc = Util.null2String(request.getParameter("isPc"));
 
-    if ( "add".equalsIgnoreCase(action) && !"".equals(want) ){
+    if (!"".equals(want) ){
         String sql = "select id,yqmc from uf_yqjcsz where szgs="+want;
         RecordSet rs = new RecordSet();
         rs.execute(sql);
@@ -28,10 +28,10 @@
         }
     }
     String wfpc = "http://120.77.149.125/spa/workflow/static4form/index.html?ssoToken=";
-    String wfpcC = "#/main/workflow/req?";
+    String wfpcC = "&_#/main/workflow/req?";
     String wfmb ="http://120.77.149.125/spa/workflow/forwardMobileForm.html?ssoToken=";
-    String create = "iscreate=1&workflowid="+workflowid+"&want="+want+"&name="+name;
-    String doing = "requestid="+requestid;
+    String create = "iscreate=1&isneed=1&workflowid="+workflowid+"&want="+want+"&name="+name;
+    String doing = "requestid="+requestid+"&isneed=1&want="+want+"&name="+name;
     if ("add".equalsIgnoreCase(action)){
         String token = getString();
         String url;

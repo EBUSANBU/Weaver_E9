@@ -42,13 +42,23 @@
     }
 
     jQuery(function () {
-        jQuery(".wf-req-top").hide();
-        WfForm.changeFieldValue(WfForm.convertFieldNameToId(field), {
-            value: getQueryString("want"),
-            specialobj:[
-                {id:getQueryString("want"),name:decodeURI(getQueryString("name"))}
-            ]
-        })
+
+        var want = getQueryString("want");
+        if (want != 'undefined'){
+            WfForm.changeFieldValue(WfForm.convertFieldNameToId(field), {
+                value: getQueryString("want"),
+                specialobj:[
+                    {id:getQueryString("want"),name:decodeURI(getQueryString("name"))}
+                ]
+            })
+        }
+
+        jQuery(".wf-req-top").hide();  //如果不是放在移动端代码块，删掉
+        var d = jQuery(".wea-right-menu");
+        for (var i in d ) {
+            d[i].outerHTML='';
+        }
+
     });
 
 </script>

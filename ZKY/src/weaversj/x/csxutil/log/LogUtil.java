@@ -2,6 +2,8 @@ package weaversj.x.csxutil.log;
 
 import weaversj.x.csxutil.log.impl.SimpleLog;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 
@@ -38,6 +40,14 @@ public class LogUtil {
      */
     public void error(String msg) {
         logger.severe(msg);
+    }
+    public void error(Exception e) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw, true);
+        e.printStackTrace(pw);
+        pw.flush();
+        sw.flush();
+        error(sw.toString());
     }
     /**
      * LogUtil内置的日志实例，记录警告

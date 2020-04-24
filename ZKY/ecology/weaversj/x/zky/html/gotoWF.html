@@ -50,9 +50,23 @@
                jQuery("#code").show();
                jQuery("#msg").hide();
            }*/
-        gotoWF();
-        createCode(4);
+        //createCode(4);
+        //setTimeout(function(){document.getElementById("bt").click();},1000);
+        setTimeout(ChangeTime, 1000);
     };
+    function ChangeTime() {
+        var time;
+        time = jQuery("#time").text();
+        time = parseInt(time);
+        time--;
+        console.log(time);
+        if (time <= 0) {
+            gotoWF();
+        } else {
+            jQuery("#time").text(" "+time+" ");
+            setTimeout(ChangeTime, 1000);
+        }
+    }
 
     //生成验证码的方法
     function createCode(length) {
@@ -77,11 +91,12 @@
             //将生成验证码赋值到显示区
             checkCode.innerHTML = code;
         }
+
+        document.getElementById("inputCode").value = code;
     }
 
     //检查验证码是否正确
-    function validateCode()
-    {
+    function validateCode() {
         //获取显示区生成的验证码
         var checkCode = document.getElementById("checkCode").innerHTML;
         //获取输入的验证码
@@ -110,7 +125,6 @@
         dat.wid = getQueryString("wid");
         dat.want = getQueryString("want");
         dat.isPc = isPC();
-        // console.log(data);
         jQuery.ajax({
             url:"/weaversj/x/zky/jsp/getToken.jsp?",
             dataType:"text",
@@ -122,18 +136,21 @@
                     data+="&returnUrl="+window.encodeURIComponent("/weaversj/x/zky/html/msg.html");
                     window.location.href = data;
                 } else {
-                    closeWindow();
+
+                    setTimeout(closeWindow,10000);
                     window.open(data);
+                    //  window.location.href = data;
                 }
             }
         });
     }
-    function getQueryString(name)
-    {
+
+    function getQueryString(name) {
         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
         if(r!=null)return  unescape(r[2]); return null;
     }
+
     function isPC() {
         var userAgentInfo = navigator.userAgent;
         var Agents = ["Android", "iPhone",
@@ -148,6 +165,7 @@
         }
         return flag;
     }
+
     function is_weixn(){
         var ua = navigator.userAgent.toLowerCase();
         if(ua.match(/MicroMessenger/i)=="micromessenger") {
@@ -156,6 +174,7 @@
             return false;
         }
     }
+
     function closeWindow() {
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("Firefox") != -1 || userAgent.indexOf("Chrome") != -1) {
@@ -163,12 +182,12 @@
         } else {
             window.opener = null;
             window.open('', '_self');
+            //window.close();
         }
-        window.close();
     }
 </script>
 <body>
-<div id="code">
+<!--<div id="code">
     <table border="0" cellspacing="5" cellpadding="5" >
         <tr>
             <td> <div id="checkCode" class="code"  onclick="createCode(4)" ></div></td>
@@ -180,10 +199,10 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="button" onclick="validateCode()"  value="确定" /></td>
+            <td><input type="button" id='bt' onclick="validateCode()"  value="确定" /></td>
         </tr>
     </table>
-</div>
-<div id="msg"></div>
+</div>-->
+<div>将在<label id="time"> 3 </label>秒钟自动跳转,请稍等...</div>
 </body>
 </html>
