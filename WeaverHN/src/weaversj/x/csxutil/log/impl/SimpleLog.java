@@ -112,7 +112,6 @@ public class SimpleLog extends LogFactory {
     private Logger buildLogger(String name) {
 
         Logger logger = Logger.getLogger(name);
-       // System.out.println(name);
         //日志等级
         logger.setLevel(Level.INFO);
         //日志是否传递给父级
@@ -132,13 +131,11 @@ public class SimpleLog extends LogFactory {
         FileHandler fileHandler;
         fileHandler = new FileHandler(pattern, limit, count, append);
         fileHandler.setLevel(Level.INFO);
-
         //fileHandler.setEncoding("utf8");
         fileHandler.setFormatter(formatter);
         if (outputErrorFile) fileHandler.setFilter(new Filter() {
             @Override
             public boolean isLoggable(LogRecord record) {
-                //System.out.println(record.getLoggerName());
                 return record.getLevel().intValue() <= Level.INFO.intValue();
             }
         });

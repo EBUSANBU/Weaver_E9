@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://10.81.4.205/jhpt/services/OAJhptRemoteService" xmlns:intf="http://10.81.4.205/jhpt/services/OAJhptRemoteService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_apachesoap_DataHandler">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="apachesoap:DataHandler[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateReceiveDocResponse">
+
+      <wsdl:part name="updateReceiveDocReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBDWDocResponse">
+
+      <wsdl:part name="getBDWDocReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayHelloResponse">
+
+      <wsdl:part name="sayHelloReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAccountsJtbbResponse">
+
+      <wsdl:part name="getAccountsJtbbReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAttachmentByDocId1Request">
+
+      <wsdl:part name="docid" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acceptDoc1Response">
+
+      <wsdl:part name="acceptDoc1Return" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAttachmentByDocIdRequest">
+
+      <wsdl:part name="docid" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acceptDocResponse">
+
+      <wsdl:part name="acceptDocReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMainSendAndDetailListResponse">
+
+      <wsdl:part name="getMainSendAndDetailListReturn" type="impl:ArrayOf_xsd_anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAttachmentByDocIdResponse">
+
+      <wsdl:part name="getAttachmentByDocIdReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMainSendAndDetailListRequest">
+
+      <wsdl:part name="fwid" type="xsd:string"/>
+
+      <wsdl:part name="wfxxid" type="xsd:string"/>
+
+      <wsdl:part name="jsdw" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acceptDoc1Request">
+
+      <wsdl:part name="information" type="xsd:string"/>
+
+      <wsdl:part name="attachment" type="xsd:string"/>
+
+      <wsdl:part name="jsdw" type="xsd:string"/>
+
+      <wsdl:part name="dhandler" type="impl:ArrayOf_apachesoap_DataHandler"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBDWDocIdResponse">
+
+      <wsdl:part name="getBDWDocIdReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAttachmentByDocId1Response">
+
+      <wsdl:part name="getAttachmentByDocId1Return" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBDWDocIdRequest">
+
+      <wsdl:part name="jsdw" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateReceiveDocRequest">
+
+      <wsdl:part name="docid" type="xsd:string"/>
+
+      <wsdl:part name="jsdw" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBDWDocRequest">
+
+      <wsdl:part name="docid" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateCompleteDocRequest">
+
+      <wsdl:part name="docid" type="xsd:string"/>
+
+      <wsdl:part name="jsdw" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acceptDocRequest">
+
+      <wsdl:part name="information" type="xsd:string"/>
+
+      <wsdl:part name="attachment" type="xsd:string"/>
+
+      <wsdl:part name="jsdw" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayHelloRequest">
+
+      <wsdl:part name="userName" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateCompleteDocResponse">
+
+      <wsdl:part name="updateCompleteDocReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAccountsJtbbRequest">
+
+   </wsdl:message>
+
+   <wsdl:portType name="OAJhptRemoteService">
+
+      <wsdl:operation name="getAccountsJtbb">
+
+         <wsdl:input message="impl:getAccountsJtbbRequest" name="getAccountsJtbbRequest"/>
+
+         <wsdl:output message="impl:getAccountsJtbbResponse" name="getAccountsJtbbResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMainSendAndDetailList" parameterOrder="fwid wfxxid jsdw">
+
+         <wsdl:input message="impl:getMainSendAndDetailListRequest" name="getMainSendAndDetailListRequest"/>
+
+         <wsdl:output message="impl:getMainSendAndDetailListResponse" name="getMainSendAndDetailListResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBDWDocId" parameterOrder="jsdw">
+
+         <wsdl:input message="impl:getBDWDocIdRequest" name="getBDWDocIdRequest"/>
+
+         <wsdl:output message="impl:getBDWDocIdResponse" name="getBDWDocIdResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBDWDoc" parameterOrder="docid">
+
+         <wsdl:input message="impl:getBDWDocRequest" name="getBDWDocRequest"/>
+
+         <wsdl:output message="impl:getBDWDocResponse" name="getBDWDocResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAttachmentByDocId" parameterOrder="docid">
+
+         <wsdl:input message="impl:getAttachmentByDocIdRequest" name="getAttachmentByDocIdRequest"/>
+
+         <wsdl:output message="impl:getAttachmentByDocIdResponse" name="getAttachmentByDocIdResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAttachmentByDocId1" parameterOrder="docid">
+
+         <wsdl:input message="impl:getAttachmentByDocId1Request" name="getAttachmentByDocId1Request"/>
+
+         <wsdl:output message="impl:getAttachmentByDocId1Response" name="getAttachmentByDocId1Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateReceiveDoc" parameterOrder="docid jsdw">
+
+         <wsdl:input message="impl:updateReceiveDocRequest" name="updateReceiveDocRequest"/>
+
+         <wsdl:output message="impl:updateReceiveDocResponse" name="updateReceiveDocResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateCompleteDoc" parameterOrder="docid jsdw">
+
+         <wsdl:input message="impl:updateCompleteDocRequest" name="updateCompleteDocRequest"/>
+
+         <wsdl:output message="impl:updateCompleteDocResponse" name="updateCompleteDocResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acceptDoc" parameterOrder="information attachment jsdw">
+
+         <wsdl:input message="impl:acceptDocRequest" name="acceptDocRequest"/>
+
+         <wsdl:output message="impl:acceptDocResponse" name="acceptDocResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acceptDoc1" parameterOrder="information attachment jsdw dhandler">
+
+         <wsdl:input message="impl:acceptDoc1Request" name="acceptDoc1Request"/>
+
+         <wsdl:output message="impl:acceptDoc1Response" name="acceptDoc1Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayHello" parameterOrder="userName">
+
+         <wsdl:input message="impl:sayHelloRequest" name="sayHelloRequest"/>
+
+         <wsdl:output message="impl:sayHelloResponse" name="sayHelloResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OAJhptRemoteServiceSoapBinding" type="impl:OAJhptRemoteService">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAccountsJtbb">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAccountsJtbbRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAccountsJtbbResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMainSendAndDetailList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMainSendAndDetailListRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMainSendAndDetailListResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBDWDocId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBDWDocIdRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBDWDocIdResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBDWDoc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBDWDocRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBDWDocResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAttachmentByDocId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAttachmentByDocIdRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAttachmentByDocIdResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAttachmentByDocId1">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAttachmentByDocId1Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAttachmentByDocId1Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateReceiveDoc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateReceiveDocRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateReceiveDocResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateCompleteDoc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateCompleteDocRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateCompleteDocResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acceptDoc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="acceptDocRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="acceptDocResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acceptDoc1">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="acceptDoc1Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="acceptDoc1Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayHello">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sayHelloRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://remoteInterface.exchange.saneis.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sayHelloResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.81.4.205/jhpt/services/OAJhptRemoteService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OAJhptRemoteServiceService">
+
+      <wsdl:port binding="impl:OAJhptRemoteServiceSoapBinding" name="OAJhptRemoteService">
+
+         <wsdlsoap:address location="http://10.81.4.205/jhpt/services/OAJhptRemoteService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

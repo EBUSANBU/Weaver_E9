@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class LogUtil {
 
     //LogUtil工具提供的默认实例(废弃)
-    // private static final Logger logger = new SimpleLog().getLogger(LogUtil.class.getName());
+   // private static final Logger logger = new SimpleLog().getLogger(LogUtil.class.getName());
 
     private Logger logger;
     /**
@@ -19,15 +19,12 @@ public class LogUtil {
      * @return
      */
     public static LogUtil getLogger(String name){
-       // System.out.println("getLogger" + name);
         return new LogUtil(name);
     }
 
     private LogUtil(String name){
-      //  System.out.println("LogUtil" + name);
         LogFactory logFactory = new SimpleLog();
         this.logger =  logFactory.getLogger(name);
-      //  System.out.println("LogUtil2" +this.logger.getName());
     }
 
     /**
@@ -36,7 +33,6 @@ public class LogUtil {
      */
     public void info(String msg){
         logger.info(msg);
-       // System.out.println("info" +logger.getName());
     }
     /**
      * LogUtil内置的日志实例，记录错误
@@ -72,11 +68,11 @@ public class LogUtil {
         return sw.toString();
     }
 
-   /* public static void main(String[] args) {
+    public static void main(String[] args) {
         // TODO Auto-generated method stub
         LogUtil log = LogUtil.getLogger(LogUtil.class.getName());
         log.info("ceshi");
         log.error("ceshi");
-    }*/
+    }
 
 }

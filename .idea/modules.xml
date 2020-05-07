@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DT/DT.iml" filepath="$PROJECT_DIR$/DT/DT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LOGRunner/LOGRunner.iml" filepath="$PROJECT_DIR$/LOGRunner/LOGRunner.iml" />
       <module fileurl="file://$PROJECT_DIR$/SQLRunner/SQLRunner.iml" filepath="$PROJECT_DIR$/SQLRunner/SQLRunner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeaverHN/WeaverHN.iml" filepath="$PROJECT_DIR$/WeaverHN/WeaverHN.iml" />
       <module fileurl="file://$PROJECT_DIR$/Weaver_E9.iml" filepath="$PROJECT_DIR$/Weaver_E9.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZKY/ZKY.iml" filepath="$PROJECT_DIR$/ZKY/ZKY.iml" />
     </modules>

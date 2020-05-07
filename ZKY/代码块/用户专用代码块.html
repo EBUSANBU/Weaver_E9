@@ -44,7 +44,7 @@
     jQuery(function () {
 
         var want = getQueryString("want");
-        if (want != 'undefined'){
+        if (typeof(want) != "undefined" && want != "" && want != null){
             WfForm.changeFieldValue(WfForm.convertFieldNameToId(field), {
                 value: getQueryString("want"),
                 specialobj:[
@@ -52,17 +52,29 @@
                 ]
             })
         }
-
-        jQuery(".wf-req-top").hide();  //如果不是放在移动端代码块，删掉
         var d = jQuery(".wea-right-menu");
         for (var i in d ) {
             d[i].outerHTML='';
         }
 
+        //-------------- //如果放在移动端代码块，删掉
+        var jjj = jQuery(".ant-tabs-tab");
+        for(var i = 1;i <jjj.length;i++){ jjj[i].innerHTML = '';}
+
+        //-------------- //如果不是放在移动端代码块，删掉
+        jQuery(".wf-req-top").hide();
     });
 
 </script>
-<body>
 
+<script>
+    jQuery(function () {
+
+        var jjj = jQuery(".ant-tabs-tab");
+        for(var i = 1;i <jjj.length;i++){ jjj[i].innerHTML = '';}
+
+    });
+</script>
+<body>
 </body>
 </html>

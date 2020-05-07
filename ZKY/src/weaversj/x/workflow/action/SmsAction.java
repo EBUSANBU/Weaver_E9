@@ -11,14 +11,17 @@ import weaversj.x.csxutil.log.LogUtil;
 
 import java.util.UUID;
 
+/**
+ * 短信服务接口
+ */
 public class SmsAction implements Action {
 
     private static LogUtil log = LogUtil.getLogger(SmsService.class.getName());
 
     private String url,serialnum,key,password,isRegist;
-    private String sign;
-    private String fieldNumber;
-    private String fieldMsg;
+    private String sign; //前缀
+    private String fieldNumber;  //数据库手机号码字段名
+    private String fieldMsg;//数据库短信内容字段名
 
     public String getFieldNumber() {
         return fieldNumber;

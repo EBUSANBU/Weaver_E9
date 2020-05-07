@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<!-- pc - 提交前短信验证 -->
+<script type='text/javascript' src='/weaversj/x/zky/public_ui/js/common.js?v=qwertyu'></script>
+<script>
+    var numberField = 'lxfs';  //手机号码数据库字段名
+    var sign = "中国科技院"; //签名
+    jQuery().ready(function() {
+        WfForm.registerCheckEvent(WfForm.OPER_SUBMIT, function (callback) {
+            var code = getCode();
+            sendCode(code);
+            var uCode = prompt("请输入短信验证码","");
+            if (uCode != code)
+                alert("验证码错误，请重新提交！");
+            else
+                callback();    //继续提交需调用callback，不调用代表阻断
+        });
+    });
+    function sendCode(code) {
+        var f = getFields(jQuery("input[name=workflowid]").val());
+        var dat = {};
+        dat.code = code;
+        dat.number = jQuery("#"+f['mid'][numberField]).val();
+        dat.sign = sign;
+        jQuery.ajax({
+            url:"/weaversj/x/zky/jsp/getCode.jsp?",
+            dataType:"text",
+            type:"post",
+            data: dat,
+            async:true,
+            success:function (data) {
+
+            }
+        });
+    }
+    function getCode() {
+        var code = "";
+        var codeLength = 6; //验证码的长度
+        /*var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        */
+        var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        //循环组成验证码的字符串
+        for (var i = 0; i < codeLength; i++)
+        {
+            //获取随机验证码下标
+            var charNum = Math.floor(Math.random() * 10);
+            //组合成指定字符验证码
+            code += codeChars[charNum];
+        }
+        return code;
+    }
+</script>
+
+
+
+<!-- mb 提交前短信验证 -->
+<script type='text/javascript' src='/weaversj/x/zky/public_ui/js/common.js?v=qwertyu'></script>
+<script>
+    var numberField = 'field11540';  //手机号码
+    var sign = "中国科技开发院"; //签名
+    jQuery().ready(function() {
+        WfForm.registerCheckEvent(WfForm.OPER_SUBMIT, function (callback) {
+            var code = getCode();
+            sendCode(code);
+            var uCode = prompt("请输入短信验证码","");
+            if (uCode != code)
+                alert("验证码错误，请重新提交！");
+            else
+                callback();    //继续提交需调用callback，不调用代表阻断
+        });
+    });
+    function sendCode(code) {
+        var dat = {};
+        dat.code = code;
+        dat.number = jQuery("#"+numberField ).val();
+        dat.sign = sign;
+        jQuery.ajax({
+            url:"/weaversj/x/zky/jsp/getCode.jsp?",
+            dataType:"text",
+            type:"post",
+            data: dat,
+            async:true,
+            success:function (data) {
+
+            }
+        });
+    }
+    function getCode() {
+        var code = "";
+        var codeLength = 6; //验证码的长度
+        /*var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        */
+        var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        //循环组成验证码的字符串
+        for (var i = 0; i < codeLength; i++)
+        {
+            //获取随机验证码下标
+            var charNum = Math.floor(Math.random() * 10);
+            //组合成指定字符验证码
+            code += codeChars[charNum];
+        }
+        return code;
+    }
+</script>
+
+
+
+
+
+
+</html>
